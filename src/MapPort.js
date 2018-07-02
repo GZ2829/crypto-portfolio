@@ -57,7 +57,7 @@ class MapPort extends Component {
                 <input className='num1' type='number' name='num1' onChange={this.handleChange} placeholder="Amount Of Coins" value={this.state.num1} />
                 <input className='num2' type='number' name='num2' onChange={this.handleChange} placeholder='Price?' value={this.state.num2} />
                 <button className='trut' onClick={() => this.handleSubmit1(this.state.num1, this.state.num2, holder)}>Calculate</button>
-                <p style={{ color: this.props.totalNum[this.props.holder.id].value > 0.00 ? 'rgb(60, 255, 76)' : 'rgb(253, 0, 0)' }} className='toats'>Current Earnings: {Math.floor(this.props.totalNum[this.props.holder.id].value)}USD</p>
+                <p style={{ color: this.props.totalNum[this.props.holder.id].value > 0.00 ? 'rgb(60, 255, 76)' : 'rgb(253, 0, 0)' }} className='toats'>Current Earnings: ${Math.floor(this.props.totalNum[this.props.holder.id].value)}</p>
                 <button className='butt' onClick={(e) => this.handleSubmit(holder)}>Remove Coin</button>
             </div>
         )
