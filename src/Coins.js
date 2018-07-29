@@ -54,7 +54,7 @@ class Coins extends Component {
                         <h2 className='tick'>Ticker: {key.symbol}</h2>
                         <h2 className='rank'>Rank: {key.rank}</h2>
                         <p className='total'>Total Supply: {key.total_supply.toLocaleString()}</p>
-                        <p className='max'>Max Supply: {key.max_supply}</p>
+                        {key.max_supply > 0 ? <p className='max'>Max Supply: {key.max_supply.toLocaleString()}</p>: <p className='max'>Max Supply: Unavailable</p>}
                         <p className='price'>Price in USD: ${key.quotes.USD.price}</p>
                         <p className='v24'>24hr Volume: ${key.quotes.USD.volume_24h.toLocaleString()}</p>
                         <p className='market'>Market Cap: ${key.quotes.USD.market_cap.toLocaleString()}</p>
@@ -73,12 +73,13 @@ class Coins extends Component {
                     <h2 className='coi'>Active Coins: {this.props.global.data.active_cryptocurrencies}</h2>
                     <h2 className='mar'>Active Markets: {this.props.global.data.active_markets}</h2>
                     <h3 className='bit'>Bitcoin % Of Market: {this.props.global.data.bitcoin_percentage_of_market_cap}%</h3>
-                    <h3 className='cap'>Total Market Cap USD: {this.props.global.data.quotes.USD.total_market_cap}</h3>
-                    <h3 className='vol'>24hr Volume USD: {this.props.global.data.quotes.USD.total_volume_24h}</h3>
+                    <h3 className='cap'>Total Market Cap USD: ${this.props.global.data.quotes.USD.total_market_cap}</h3>
+                    <h3 className='vol'>24hr Volume USD: ${this.props.global.data.quotes.USD.total_volume_24h}</h3>
                     <input className='tic' type='text' onChange={this.handleChange} placeholder="SEARCH BY NAME" name='input' value={this.state.input} />
                 </div>
                 <div className="coins">
                     {mapped}
+                    {mapped < 1 ? <h1 style={{'gridColumn': '1/-1', 'color': 'white', 'justifySelf': 'center', 'alignSelf': 'center', 'height': '100vh', 'paddingTop': '20%'}}>Nothing found...</h1> : null}
                 </div>
             </div>
         );
