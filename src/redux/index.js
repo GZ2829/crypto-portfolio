@@ -85,9 +85,14 @@ const intialstate = {
     }
 
 const tot = (n1, n2, hold) => {
-    hold = hold.quotes.USD.price
-    let n3 = n1 * n2
-    let n4 = n1 * hold
+   let price = hold.quotes.USD.price
+   let n4 = n1 * price
+   let n3 = n1 * n2
+    if(n1 < 1){
+        price = hold.quotes.USD.price * n1
+        n4 = n1 * hold.quotes.USD.price
+        n3 = n2
+    }
     return (n4 - n3)
 }
 
